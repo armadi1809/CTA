@@ -1,35 +1,103 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { QueryClient, QueryClientProvider } from "react-query";
+import "./App.css";
+import RouteCard from "./RouteCard";
+import { Route } from "./interfaces/route";
+import {
+  B77_WEST_ID,
+  B9_SOUTH_ID,
+  B77_EAST_ID,
+  B9_NORTH_ID,
+  BX9_NORTH_ID,
+  BX9_SOUTH_ID,
+} from "./interfaces/stopIds";
 
+const routesDetails: Route[] = [
+  {
+    name: "Home To Work",
+    options: [
+      {
+        buses: [
+          {
+            busName: "77 West Bound",
+            busStopId: B77_WEST_ID,
+            busStopName: "Belmont/Broadway",
+            lineNumber: "77",
+          },
+          {
+            busName: "9 South Bound",
+            busStopId: B9_SOUTH_ID,
+            busStopName: "Lincoln/Ashland",
+            lineNumber: "9",
+          },
+        ],
+      },
+
+      {
+        buses: [
+          {
+            busName: "77 West Bound",
+            busStopId: B77_WEST_ID,
+            busStopName: "Belmont/Broadway",
+            lineNumber: "77",
+          },
+          {
+            busName: "X9 South Bound",
+            busStopId: BX9_SOUTH_ID,
+            busStopName: "Lincoln/Ashland",
+            lineNumber: "X9",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Work To Home",
+    options: [
+      {
+        buses: [
+          {
+            busName: "9 North Bound",
+            busStopId: B9_NORTH_ID,
+            busStopName: "Webster/Ashland",
+            lineNumber: "9",
+          },
+          {
+            busName: "77 East Bound",
+            busStopId: B77_EAST_ID,
+            busStopName: "Lincoln/Ashland",
+            lineNumber: "77",
+          },
+
+          {
+            busName: "X9 North Bound",
+            busStopId: BX9_NORTH_ID,
+            busStopName: "Ashland Fullerton",
+            lineNumber: "X9",
+          },
+          {
+            busName: "77 East Bound",
+            busStopId: B77_EAST_ID,
+            busStopName: "Lincoln/Ashland",
+            lineNumber: "77",
+          },
+        ],
+      },
+    ],
+  },
+];
 function App() {
-  const [count, setCount] = useState(0)
-
+  const queryClient = new QueryClient();
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <QueryClientProvider client={queryClient}>
+        <div className="container mx-auto grid grid-cols-2 justify-items-center gap-3">
+          {routesDetails.map((route) => (
+            <RouteCard key={route.name} route={route}></RouteCard>
+          ))}
+        </div>
+      </QueryClientProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
