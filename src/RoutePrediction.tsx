@@ -15,7 +15,7 @@ const RoutePrediction: FC<RoutePredictionProps> = ({
   stopName,
   busName,
 }) => {
-  const { isLoading, error, data } = useQuery({
+  const { isLoading, data } = useQuery({
     queryKey: [rt + stpid],
     queryFn: async () => {
       const res = await fetch(

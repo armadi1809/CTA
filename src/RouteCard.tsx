@@ -14,18 +14,6 @@ import RouteModal from "./RouteModal";
 interface RouteCardProps {
   route: Route;
 }
-const onClickFetchTry = async () => {
-  const res = await fetch(
-    "/api?" +
-      new URLSearchParams({
-        key: import.meta.env.VITE_API_KEY,
-        rt: "9",
-        stpid: "18636",
-        format: "json",
-      })
-  ).then((res) => res.json());
-  console.log("Hereeee1", res);
-};
 const RouteCard: FC<RouteCardProps> = ({ route }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
 
