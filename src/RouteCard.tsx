@@ -55,8 +55,8 @@ const RouteCard: FC<RouteCardProps> = ({ route }) => {
         <CardFooter className="flex justify-center items-center">
           <Button
             onClick={async () => {
-              // setShowModal(true);
-              await onClickFetchTry();
+              setShowModal(true);
+              // await onClickFetchTry();
             }}
           >
             Time Estimates

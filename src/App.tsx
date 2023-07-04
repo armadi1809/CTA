@@ -67,7 +67,10 @@ const routesDetails: Route[] = [
             busStopName: "Lincoln/Ashland",
             lineNumber: "77",
           },
-
+        ],
+      },
+      {
+        buses: [
           {
             busName: "X9 North Bound",
             busStopId: BX9_NORTH_ID,
@@ -85,11 +88,16 @@ const routesDetails: Route[] = [
     ],
   },
 ];
+
+const queryClient = new QueryClient();
 function App() {
-  const queryClient = new QueryClient();
   return (
     <>
       <QueryClientProvider client={queryClient}>
+        <h3 className="border rounded-md bg-slate-400 m-10 h-16 flex justify-center items-center">
+          Hello Zizo, Select the route you are following to get estimates of the
+          bus arrival times
+        </h3>
         <div className="container mx-auto grid grid-cols-2 justify-items-center gap-3">
           {routesDetails.map((route) => (
             <RouteCard key={route.name} route={route}></RouteCard>
