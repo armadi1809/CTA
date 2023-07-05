@@ -74,7 +74,7 @@ const routesDetails: Route[] = [
           {
             busName: "X9 North Bound",
             busStopId: BX9_NORTH_ID,
-            busStopName: "Ashland Fullerton",
+            busStopName: "Ashland/Fullerton",
             lineNumber: "X9",
           },
           {

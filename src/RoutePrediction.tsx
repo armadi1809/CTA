@@ -34,12 +34,19 @@ const RoutePrediction: FC<RoutePredictionProps> = ({
   const response = data && data["bustime-response"];
   const prediction =
     response && response.prd ? response.prd[0].prdctdn : undefined;
-  const errorMsg =
-    response && response.error ? response.error[0].msg : undefined;
+  const errorMsg = response && response.error ? "No Bus" : undefined;
   return (
-    <div className="flex justify-between items-center gap-2">
-      <span>{busName + " " + stopName}</span>
-      {isLoading ? <Loader2 /> : <span>{prediction || errorMsg}</span>}
+    <div className="flex justify-between items-center gap-2 w-full">
+      <span className="text-xs md:text-base whitespace-nowrap">
+        {busName + " " + stopName}
+      </span>
+      {isLoading ? (
+        <Loader2 />
+      ) : (
+        <span text-xs className="text-xs md:text-base whitespace-nowrap">
+          {prediction || errorMsg}
+        </span>
+      )}
     </div>
   );
 };

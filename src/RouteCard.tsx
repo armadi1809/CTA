@@ -25,7 +25,7 @@ const RouteCard: FC<RouteCardProps> = ({ route }) => {
           route={route}
         ></RouteModal>
       )}
-      <Card className="w-[350px]">
+      <Card className="w-28 md:w-48 lg:w-96">
         <CardHeader>
           <CardTitle>{route.name}</CardTitle>
           <CardDescription className="whitespace-pre-line">
