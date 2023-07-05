@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/*"
+  to = "http://www.ctabustracker.com/bustime/api/v2/getpredictions/:splat"
+  status = 200
+  force = true
